@@ -1,5 +1,5 @@
 import Canvas from './Controllers/CanvasInterface';
-import AlgorithmIterator from './Controllers/SortingIterator/SortingIterator';
+import AlgorithmIterator from './Controllers/AlgorithmIterator/AlgorithmIterator';
 import ControlPanel from './Views/UI/ControlPannel';
 import SideBar from './Views/UI/SideBar';
 
@@ -15,8 +15,9 @@ class App extends Canvas {
         selectAlgorithmSideBar.connectEvents(this.algorithm.changeCurrentAlgorithm.bind(this.algorithm));
         
         const controlPannel = new ControlPanel('header');
-        controlPannel.connectStartEvent(this.algorithm.start);
-        controlPannel.connectCreateNew(this.algorithm.generateNewArray);
+        // controlPannel.connectAllEvents(this.algorithm);
+        controlPannel.connectStartEvent(this.algorithm.start.bind(this.algorithm));
+        controlPannel.connectCreateNew(this.algorithm.generateNewArray.bind(this.algorithm));
         controlPannel.connectSpeedRange((ev) => {this.changeFps(ev.target.value)})
         controlPannel.connectToggleAlgorithmMenuEvent((ev) => selectAlgorithmSideBar.toggle(ev))
     }
@@ -26,11 +27,10 @@ class App extends Canvas {
     }
 
     static onUpdate() {
-        const {array, iterator, isSorting } = this.algorithm;
+        const {array} = this.algorithm;
         array.render(this.ctx)
-        if(isSorting && iterator) {
-            this.algorithm.renderIteration();
-        }
+        this.algorithm.renderIteration();
+        
     }
 }
 

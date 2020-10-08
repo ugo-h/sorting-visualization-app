@@ -1,3 +1,96 @@
 * {
     box-sizing: border-box;
+    margin:0;
+}
+
+body{
+    font-family: sans-serif;
+    margin:0;
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.header{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 2rem;
+    background:#98cff0;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.header__btn{
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border:none;
+    background: white;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.header__btn:hover{
+    background: #4900ff;
+    color: white;
+}
+.header__btn:last-of-type{
+    position: absolute;
+    right: 4rem;
+}
+.canvas{
+    width: 100%;
+    max-width: 600px;
+}
+
+.range-field{
+    align-items: flex-start;
+    display: flex;
+    flex-flow:column;
+
+}
+
+.backdrop{
+    z-index: 200;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4)
+}
+.sidebar{
+    transition: transform 300ms;
+    z-index: 300;
+    background:#7cb9e8;
+    position: fixed;
+    right: 0;
+    width:20%;
+    height: 100%;
+}
+.sidebar__title{
+    color: white;
+    margin: 2rem 2rem;
+}
+.sorting-list{
+    width: 100%;
+    padding:0;
+    list-style: none;
+    height: 100%;
+}
+
+.sorting-list__el{
+    text-transform: capitalize;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    width: 100%;
+    color:white;
+}
+
+.sorting-list__el:hover{
+    background: #A4CF8A;
+}
+
+.invisible{
+    transform: translate(100%, 0);
+    /* display: none; */
 }

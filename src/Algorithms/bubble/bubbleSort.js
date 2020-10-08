@@ -1,10 +1,4 @@
-function normalSort(arr, index) {
-    return arr[index] > arr[index+1];
-};
-
-function sortByDataSize(arr, index) {
-    return arr[index].height < arr[index+1].height;
-}
+import {visualSwap, sortByDataSize} from '../algorithmHelper';
 
 export function* bubbleSortG(arr) {
     let counter = 0;
@@ -17,23 +11,18 @@ export function* bubbleSortG(arr) {
             let swaped = false;
             counter++;
             if(counter> 1000) throw new Error('Overflow')
-            if(sortByDataSize(arr, i))  {
-                yield {index: i, isSwaped: false};
-                yield {index: i, isSwaped: true};
+            if(sortByDataSize(arr, i, i+1))  {
+                yield {firstIndex: i, secondIndex: i+1, isSwaped: false};
+                yield {firstIndex: i, secondIndex: i+1, isSwaped: true};
                 visualSwap(arr[i], arr[i+1]);
                 swap(arr, i);
                 swaped = true; 
             }
-            yield {index: i, isSwaped: swaped};
+            yield {firstIndex: i, secondIndex: i+1, isSwaped: swaped};
         }
     } 
 }
 
-function visualSwap(first, second) {
-    const temp = first.x;
-    first.x = second.x;
-    second.x = temp;
-}
 
 function swap(arr, index) {
             const temp = arr[index];

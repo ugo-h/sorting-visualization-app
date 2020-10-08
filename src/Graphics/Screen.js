@@ -1,7 +1,7 @@
 
 
 export default class Screen {
-    static init(config) {
+    static init() {
         const canv = document.getElementById('canv');
         this.canv = canv;
         this.fps = 30;
@@ -28,11 +28,17 @@ export default class Screen {
         this.setupCanvas(this.canv)
         if(!this.run) return
         this.clearScreen();
-        this.onUpdate();    
+        try{
+          this.onUpdate();    
+        } catch (err) {
+          this.run = false;
+          console.log(err)
+          return;
+        }
     }
 
     static clearScreen() {
-        this.ctx.fillStyle = 'black';
+        this.ctx.fillStyle = 'white';
         this.ctx.fillRect(0, 0, this.width, this.height);
     }
     
@@ -42,7 +48,7 @@ export default class Screen {
     }
     
     static getWidth() {
-      let width = window.visualViewport.width;
+      let width = window.visualViewport.width*0.8;
       return width
     }
 

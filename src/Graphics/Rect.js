@@ -1,6 +1,6 @@
 // const { SHOW_CENTERS, DEFAULT_COLOR } = config;
 
-const DEFAULT_COLOR = 'white';
+const DEFAULT_COLOR = '#ffdfba';
 const SHOW_CENTERS = false;
 
 class Point2d {
@@ -11,10 +11,10 @@ class Point2d {
 }
   
   class Rect extends Point2d {
-    constructor(x, y, width, height) {
+    constructor(x, y, width, height, color = DEFAULT_COLOR) {
         super(x, y);
-        this.color = DEFAULT_COLOR;
-        this.dColor = DEFAULT_COLOR;
+        this.color = color;
+        this.dColor = color;
         this.width = width*0.5;
         this.height = height*0.5;
         this.vy = 0;

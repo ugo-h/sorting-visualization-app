@@ -1,6 +1,6 @@
 
 
-export default class Screen {
+export default class Canvas {
     static init() {
         const canv = document.getElementById('canv');
         this.canv = canv;

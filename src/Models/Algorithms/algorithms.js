@@ -1,7 +1,7 @@
 import { bubbleSortG }  from './bubble/bubbleSort';
-import InsertionSort from './insertion/insertionSort';
+import selectionSort from './selection/selectionSort';
 
 export default {    
     bubble: bubbleSortG,
-    insertion: InsertionSort
+    selection: selectionSort
 }

@@ -1,11 +1,11 @@
-import generateVisualArray from '../Helper/ArrayHelper';
-import algorithms from '../Algorithms/algorithms';
+import generateVisualArray from '../../Helper/ArrayHelper';
+import algorithms from '../../Models/Algorithms/algorithms';
 
 const GREEN = '#A4CF8A';
 const RED = '#ffb3ba';
 
 
-export default class SortingIterator {
+export default class AlgorithmIterator {
     constructor(fps, width) {
         this.generateNewArray = this.generateNewArray.bind(this);
         this.startSortingHandler = this.startSortingHandler.bind(this);
@@ -26,7 +26,7 @@ export default class SortingIterator {
 
     }
 
-    startSortingHandler(ev) {
+    start(ev) {
         ev.currentTarget.innerText = this.isSorting? 'SORT': 'STOP';
         this.isSorting = !this.isSorting
         const algorithm = algorithms[this.currentAlgorithm];
@@ -39,13 +39,14 @@ export default class SortingIterator {
         this.array = generateVisualArray(20, this.screenWidth);
     };
 
-    handleSorting() {
+    renderIteration() {
         const { value, done } = this.iterator.next()
         const firstIndex = value? value.firstIndex: null;
         const secondIndex = value? value.secondIndex: null;
         const swaped = value? value.isSwaped: null;
         
         let color = swaped? RED: GREEN;
+        
         this.changeColorOfCurrentItems(firstIndex, secondIndex, color);
         this.isSorting = !done;
         if(done) this.iterator = null;

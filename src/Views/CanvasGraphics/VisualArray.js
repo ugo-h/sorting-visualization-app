@@ -1,4 +1,4 @@
-import Rect from '../Graphics/Rect';
+import Rect from './Rect';
 
 class VisualArray {
     constructor(array, width) {

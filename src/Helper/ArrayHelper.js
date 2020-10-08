@@ -1,4 +1,4 @@
-import VisualArray from '../Struct/VisualArray';
+import VisualArray from '../Views/CanvasGraphics/VisualArray';
 
 
 function generateArray(n) {

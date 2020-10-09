@@ -1,6 +1,6 @@
-import {visualSwap, sortByDataSize} from '../algorithmHelper';
+import { visualSwap, sortByHeight, swap } from '../algorithmHelper';
 
-export function* bubbleSortG(arr) {
+export function* bubbleSort(arr) {
     let counter = 0;
     for(let j = 0; j < arr.length-1; j++)  {
         for(let i = 0; i < arr.length-j-1; i++) {
@@ -11,11 +11,11 @@ export function* bubbleSortG(arr) {
             let swaped = false;
             counter++;
             if(counter> 1000) throw new Error('Overflow')
-            if(sortByDataSize(arr, i, i+1))  {
+            if(sortByHeight(arr, i, i+1))  {
                 yield {firstIndex: i, secondIndex: i+1, isSwaped: false};
                 yield {firstIndex: i, secondIndex: i+1, isSwaped: true};
                 visualSwap(arr[i], arr[i+1]);
-                swap(arr, i);
+                swap(arr, i, i+1);
                 swaped = true; 
             }
             yield {firstIndex: i, secondIndex: i+1, isSwaped: swaped};
@@ -23,9 +23,3 @@ export function* bubbleSortG(arr) {
     } 
 }
 
-
-function swap(arr, index) {
-            const temp = arr[index];
-            arr[index] = arr[index+1];
-            arr[index+1] = temp;        
-}

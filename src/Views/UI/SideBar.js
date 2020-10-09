@@ -12,7 +12,7 @@ class SideBar {
     createList(contents) {
         const ul = createElement('ul', {
             className: 'sorting-list',
-            children: contents.map(el => createElement('li', {name: el.name, innerText: el.name, className: 'sorting-list__el'}))
+            children: contents.map(el => createElement('li', {name: el, innerText: el, className: 'sorting-list__el'}))
         })
         this.root.appendChild(ul)
         return ul;

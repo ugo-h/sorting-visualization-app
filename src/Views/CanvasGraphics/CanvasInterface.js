@@ -43,7 +43,7 @@ export default class Canvas {
     }
     
     static getHeight() {
-      let height = window.visualViewport.height/2;
+      let height = window.visualViewport.height/1.2;
       return height;
     }
     

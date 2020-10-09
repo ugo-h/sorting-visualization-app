@@ -26,6 +26,12 @@ class ControlPannel{
       return range;
     }
 
+    connectAllClickEvents(startEvent, createNewArrayEvent, toggleAlgorithmMenuEvent) {
+        this.connectStartEvent(startEvent) 
+        this.connectCreateNew(createNewArrayEvent) 
+        this.connectToggleAlgorithmMenuEvent(toggleAlgorithmMenuEvent) 
+    }
+
     connectSpeedRange(event) {
         this.speedRange.addEventListener('input', event);
     }

@@ -4,6 +4,12 @@ export function visualSwap(first, second) {
     second.x = temp;
 }
 
-export function sortByDataSize(arr, i, j) {
+export function sortByHeight(arr, i, j) {
     return arr[i].height < arr[j].height;
+}
+
+export function swap(arr, i, j) {
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;      
 }

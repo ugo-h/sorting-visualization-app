@@ -4,7 +4,7 @@ import VisualArray from '../Views/CanvasGraphics/VisualArray';
 function generateArray(n) {
     const arr = [];
     for(let i = 0; i < n; i++) {
-        arr.push(Math.random() * 55 + 2)
+        arr.push(Math.random() * 43 + 2)
     }
     return arr;
 }

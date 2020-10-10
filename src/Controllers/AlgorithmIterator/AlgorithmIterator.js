@@ -7,7 +7,7 @@ export default class AlgorithmIteratorInterface {
         this.screenWidth = width;
         this.fps = fps;
 
-        this.currentAlgorithmName = 'selection';
+        this.currentAlgorithmName = 'merge';
         
         this.iterator = null;
         this.array = null;

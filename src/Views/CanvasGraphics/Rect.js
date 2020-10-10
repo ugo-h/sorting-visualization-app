@@ -21,10 +21,21 @@ class Point2d {
         this.vx = 0;
     };
 
-    getFullWidth() {
-      return this.width*2+2;
-    }
+      getX() {
+        return this.x;
+      }
+  
+      setX(value) {
+        this.x = value
+      }
 
+      setColor(color) {
+        this.color = color;
+      }
+  
+      getFullWidth() {
+        return this.width*2+2;
+      }
     draw(ctx) {
       ctx.fillStyle = this.color;
       ctx.fillRect(

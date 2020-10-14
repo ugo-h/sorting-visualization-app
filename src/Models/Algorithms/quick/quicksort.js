@@ -10,7 +10,7 @@ function* _quickSort(arr, s, e) {
     let pivot = e;
     let i = s;
     let j = s - 1;
-    arr[pivot].setColor('blue');
+    arr[pivot].setColor('#62a9df');
     while(i < e) {
         if(arr[i-1]) arr[i-1].setColorToDefault();
         if(arr[j-1]) arr[j-1].setColorToDefault();
@@ -18,10 +18,12 @@ function* _quickSort(arr, s, e) {
         if(sortByHeight(arr, i, pivot)) {
             if(arr[j]) arr[j].setColorToDefault();
             j++;
-            yield {firstIndex: i, secondIndex: j, isSwaped: false};
-            yield {firstIndex: i, secondIndex: j, isSwaped: true};
-            visualSwap(arr[i], arr[j])
-            swap(arr, i, j);
+            if(i > j) {
+                yield {firstIndex: i, secondIndex: j, isSwaped: false};
+                yield {firstIndex: i, secondIndex: j, isSwaped: true};
+                visualSwap(arr[i], arr[j])
+                swap(arr, i, j);
+            }
         };
         i++;
     };

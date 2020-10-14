@@ -12,14 +12,13 @@ export default class AlgorithmIteratorInterface {
         this.iterator = null;
         this.array = null;
         this.generateNewArray();
-        console.log(this.array)
         
     };
 
     changeCurrentAlgorithm(value) {
-        this.currentAlgorithm = value;
+        this.currentAlgorithmName = value;
         this.iterator = createAlgorithmIterator(value, this.array.visual);
-    }
+    };
 
     startHandler(ev) {
         ev.currentTarget.innerText = this.isSorting? 'SORT': 'STOP';

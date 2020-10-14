@@ -28,7 +28,9 @@ class Point2d {
       setX(value) {
         this.x = value
       }
-
+      setColorToDefault() {
+        this.setColor(this.dColor);
+      }
       setColor(color) {
         this.color = color;
       }

@@ -1,8 +1,7 @@
-import { sortByHeight, swap } from '../algorithmHelper';
+import { sortByHeight } from '../algorithmHelper';
 
 export default function* mergeSort(arr) {
     yield* _mergeSort(arr, 0, arr.length - 1)
-    console.log(arr)
 }
 
 function* _mergeSort(arr, start, end) {
@@ -11,72 +10,72 @@ function* _mergeSort(arr, start, end) {
     yield* _mergeSort(arr, start, mid);
     yield* _mergeSort(arr, mid+1, end);
     yield* merge(arr, start, mid, end);
-    
 }
 
 function* merge(arr, s, m, e) {
     const result = [];
     let i = s;
-    let j = m+1;
+    let j = m + 1;
     let k = 0;
-    const hash = {};
     while(i <= m && j <= e) {
+        yield {firstIndex: i, secondIndex: j, isSwaped: false};
         if(sortByHeight(arr, i, j)) {
-            result[k] = arr[i];
-            hash[k] = i;
+            if(arr[i-1]) arr[i-1].setColorToDefault();
+            arr[j].setColorToDefault();
+            yield {firstIndex: j, secondIndex: i, isSwaped: true};
             visualLift(arr[i], k);
-            yield {firstIndex: i, secondIndex: i, isSwaped: false};
-            if(arr[i-1]) arr[i-1].color = arr[i-1].dColor;
-            arr[j].color = arr[j].dColor;
+            yield {firstIndex: j, secondIndex: i, isSwaped: false};
+            result[k] = arr[i];
             i++;
             k++;
         } else {
-            result[k] = arr[j];
-            hash[k] = j;
+            if(arr[j-1]) arr[j-1].setColorToDefault();
+            arr[i].setColorToDefault();
+            yield {firstIndex: i, secondIndex: j, isSwaped: true};
             visualLift(arr[j], k);
-            yield {firstIndex: j, secondIndex: j, isSwaped: false};
-            if(arr[j-1]) arr[j-1].color = arr[j-1].dColor;
-            arr[i].color = arr[i].dColor;
+            yield {firstIndex: i, secondIndex: j, isSwaped: false};
+            result[k] = arr[j];
             j++;
             k++;
         }
     }
     while(i <= m) {
-        result[k] = arr[i];
-        hash[k] = i;
+        if(arr[i-1]) arr[i-1].setColorToDefault();
+        yield {firstIndex: i, secondIndex: i, isSwaped: true};
         visualLift(arr[i], k);
         yield {firstIndex: i, secondIndex: i, isSwaped: false};
-        if(arr[i-1]) arr[i-1].color = arr[i-1].dColor;
+        result[k] = arr[i];
         i++;
         k++;
     }
     while(j <= e) {
-        result[k] = arr[j];
-        hash[k] = j;
+        if(arr[j-1]) arr[j-1].setColorToDefault();
+        yield {firstIndex: j, secondIndex: j, isSwaped: true};
         visualLift(arr[j], k);
         yield {firstIndex: j, secondIndex: j, isSwaped: false};
-        if(arr[j-1]) arr[j-1].color = arr[j-1].dColor;
+        result[k] = arr[j];
         j++;
         k++;
     }
-    let y = 0;
     for(let x = s; x < e+1; x++) {
-        arr[x] = result[y];
-        visualSwap(arr[x], x)
+        arr[x] = result[x-s];
+    }
+    for(let x = s; x < e+1; x++) {
+        
+        if(arr[x-1]) arr[x-1].setColorToDefault();
+        visualReturnToOrigin(arr[x], x)
         yield {firstIndex: x, secondIndex: x, isSwaped: false};
-        if(arr[x-1]) arr[x-1].color = arr[x-1].dColor;
-        y++; 
     }
 }
 
 function visualLift(item, index) {
     const width = item.getFullWidth();
-    item.y+=250-item.height;
+    item.y = 300 + Math.abs(item.height)
     item.x = index * width + width/2+2;
 }
 
-function visualSwap(item, index) {
+function visualReturnToOrigin(item, index) {
     const width = item.getFullWidth();
-    item.y=0;
+    item.y = -item.height/2;
     item.x = index * width + width/2+2;
 }

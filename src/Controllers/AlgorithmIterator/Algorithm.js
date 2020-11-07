@@ -7,15 +7,15 @@ const RED = '#ffb3ba';
 export function createAlgorithmIterator(name, array) {
     if(!algorithms[name]) throw new Error('Algorithm with this name is not supported. See Algorithms.js');
     const algorithm = algorithms[name];
-    return algorithm(array)
-}
+    return algorithm(array);
+};
 
 export function renderAlgorithmStep(iterator, array) {
     const { value, done } = iterator.next();
     const { firstIndex, secondIndex, color } = getIterationData(value);
     changeColorOfItems(array, firstIndex, secondIndex, color);
     return done;
-}
+};
 
 function getIterationData(value) {
     const firstIndex = value? value.firstIndex: null;
@@ -23,6 +23,6 @@ function getIterationData(value) {
     const swaped = value? value.isSwaped: null;
     const color = swaped? RED: GREEN;
     return { firstIndex, secondIndex, color };
-}
+};
 
 

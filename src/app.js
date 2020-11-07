@@ -12,7 +12,6 @@ class App extends Canvas {
 
         this.algorithm = new AlgorithmIterator(this.fps, this.width);
         this.connectUI();
-        
     }
     
     static connectUI() {
@@ -26,18 +25,18 @@ class App extends Canvas {
         const controlPannel = new ControlPanel('header');
         controlPannel.connectAllClickEvents(startHandler, generateNewArray, (ev) => selectAlgorithmSideBar.toggle(ev));
         controlPannel.connectSpeedRange((ev) => {this.changeFps(ev.target.value)})
-    }
+    };
+
     static changeFps(fps) {
         this.fps = fps;
-    }
-
+    };
 
     static onUpdate() {
-        const {array} = this.algorithm;
+        const { array } = this.algorithm;
         array.render(this.ctx)
         this.algorithm.renderIteration(); 
-    }
-}
+    };
+};
 
 
 App.init();

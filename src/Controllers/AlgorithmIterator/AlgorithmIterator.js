@@ -3,7 +3,6 @@ import { createAlgorithmIterator, renderAlgorithmStep } from './Algorithm'
 
 export default class AlgorithmIteratorInterface {
     constructor(fps, width) {
-
         this.screenWidth = width;
         this.fps = fps;
 
@@ -11,8 +10,8 @@ export default class AlgorithmIteratorInterface {
         
         this.iterator = null;
         this.array = null;
-        this.generateNewArray();
         
+        this.generateNewArray();        
     };
 
     changeCurrentAlgorithm(value) {
@@ -24,7 +23,6 @@ export default class AlgorithmIteratorInterface {
         ev.currentTarget.innerText = this.isSorting? 'SORT': 'STOP';
         this.isSorting = !this.isSorting;
         if(!this.iterator) this.iterator = createAlgorithmIterator(this.currentAlgorithmName, this.array.visual);
-        console.log(this.iterator)
     };
     
     generateNewArray() {
@@ -39,4 +37,4 @@ export default class AlgorithmIteratorInterface {
         this.isSorting = !done;
         if(done) this.iterator = null;
     };
-}
+};

@@ -48,7 +48,6 @@ body{
     align-items: flex-start;
     display: flex;
     flex-flow:column;
-
 }
 
 .backdrop{
@@ -66,6 +65,7 @@ body{
     right: 0;
     width:20%;
     height: 100%;
+    min-width: 300px;
 }
 .sidebar__title{
     color: white;
@@ -89,8 +89,40 @@ body{
 .sorting-list__el:hover{
     background: #A4CF8A;
 }
-
+.btn-close{
+    transition: border 300ms;
+    position: absolute;
+    width: 2rem;
+    top: 1rem;
+    right: 1rem;
+    padding:0.25rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border: solid transparent 2px;
+}
+.btn-close:hover{
+    border: solid white 2px;
+}
 .invisible{
     transform: translate(100%, 0);
-    /* display: none; */
+}
+
+@media(max-width: 900px) {
+    .header{
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .header__btn:last-of-type{
+        position: relative;
+        right: 0;
+    }
+}
+@media(max-width: 700px) {
+    .header__btn, .range-field{
+        margin: 1rem;
+    }
+    .sidebar{
+        width: 100%;
+    }
 }

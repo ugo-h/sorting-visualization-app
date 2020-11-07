@@ -6,7 +6,10 @@ class SideBar {
         this.backdrop = document.getElementById('backdrop');
         this.backdrop.addEventListener('click', this.toggle.bind(this))
         const title = createElement('h2', {innerText: 'Select algorithm', className: 'sidebar__title'});
+        const btnClose = createElement('img', {className: "btn-close", src: "./assets/svg/close-svgrepo-com.svg", alt: "close"})
+        this.connectCloseBtn(btnClose);
         this.root.appendChild(title);
+        this.root.appendChild(btnClose);
         this.listOfAlgorithms = this.createList(algorithms)
     }
     createList(contents) {
@@ -29,6 +32,9 @@ class SideBar {
     toggle() {
         this.root.classList.toggle('invisible');
         this.backdrop.classList.toggle('invisible');
+    }
+    connectCloseBtn(btn) {
+        btn.addEventListener('click', this.toggle.bind(this))
     }
 }
 

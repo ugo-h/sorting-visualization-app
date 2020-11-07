@@ -11,6 +11,6 @@
     <li>Quick sort</li>
 </ul>
 <p>
-    It is fairly easy to add any new algorithm that works with arrays, however I haven't yet tried it with algorithms that use other data structures, like heaps or hashes.
+    It is fairly easy to add any new algorithm that works with arrays, however I haven't yet tried it with algorithms that use other data structures, like heap or hash.
 </p>
 <a href="https://ugo-h.github.io/sorting-visualization-app">See demo here!</a>

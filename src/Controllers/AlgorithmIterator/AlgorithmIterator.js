@@ -10,7 +10,7 @@ export default class AlgorithmIteratorInterface {
         
         this.iterator = null;
         this.array = null;
-        
+
         this.generateNewArray();        
     };
 
@@ -35,6 +35,9 @@ export default class AlgorithmIteratorInterface {
         if(!this.isSorting || !this.iterator) return;
         const done = renderAlgorithmStep(this.iterator, this.array.visual);
         this.isSorting = !done;
-        if(done) this.iterator = null;
+        if(done) {
+            this.iterator = null;
+            document.getElementById('start-btn').innerText = 'SORT';
+        }
     };
 };

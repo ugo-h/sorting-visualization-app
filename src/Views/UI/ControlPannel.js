@@ -3,14 +3,14 @@ import { createElement } from './UI';
 class ControlPannel{
     constructor(id) {
         this.root = document.getElementById(id);
-        this.btnStart = this.createBtn('SORT');
+        this.btnStart = this.createBtn('SORT', 'start-btn');
         this.btnCreateArray = this.createBtn('NEW ARRAY');
         this.speedRange = this.createRange('speed', 2, 60);
         this.toggleAlgorithmSelectionMenu = this.createBtn('SELECT ALGORITHM');
     }
 
-    createBtn(text) {
-        const btn = createElement('button', {className:'header__btn', innerText: text});
+    createBtn(text, id='') {
+        const btn = createElement('button', {className:'header__btn', innerText: text, id});
         this.root.appendChild(btn)
         return btn;
     }
